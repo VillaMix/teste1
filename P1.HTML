@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site</title>
+    <link rel="stylesheet" href="P1.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <span class="name">Reinaldo Pompeu</span>
+            <ul>
+                <li><a href="#introducao">Introdução</a></li>
+                <li><a href="P2.HTML">Sobre Mim</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#carreira">Carreira</a></li>
+                <li><a href="P5.HTML">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="center-content">
+            <img src="img/belen.gif" alt="GIF Central" class="central-image">
+            <p><span id="fixed-text">Bem-vindo ao meu </span><span id="changing-text"></span></p>
+        </div>
+    </main>
+    <script>
+        const texts = ["site", "projeto", "currículo", "portfólio"];
+        let index = 0;
+        const changingTextElement = document.getElementById("changing-text");
+
+        function animateText() {
+            let text = texts[index];
+            let interval = setInterval(() => {
+                changingTextElement.textContent += text.charAt(0);
+                text = text.substring(1);
+                if (text === "") {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        changingTextElement.textContent = "";
+                        index = (index + 1) % texts.length;
+                        animateText();
+                    }, 2000);
+                }
+            }, 150);
+        }
+
+        animateText();
+    </script>
+</body>
+</html>
